@@ -1,0 +1,11 @@
+atsdsi\framework\pages\Page.class
+atsdsi\framework\elements\Title.class
+atsdsi\framework\SampleJUnitTest.class
+atsdsi\framework\JUnitTestBase.class
+atsdsi\framework\JUnitTestBase$2.class
+atsdsi\framework\pages\HomePage.class
+atsdsi\framework\elements\Element.class
+atsdsi\framework\util\PropertyLoader.class
+atsdsi\framework\JUnitTestBase$1.class
+atsdsi\framework\JUnitTestSuite$1.class
+atsdsi\framework\JUnitTestSuite.class
