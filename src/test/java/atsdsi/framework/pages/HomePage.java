@@ -21,17 +21,14 @@ public class HomePage extends Page {
 
   @FindBy(how = How.TAG_NAME, using = "title")
   @CacheLookup
-  public WebElement header;
+  public WebElement mainPageHeader;
+
 
 
   public HomePage(WebDriver webDriver) {
     super(webDriver);
   }
 
-  //Print title to console
-  public void printOut() {
-    System.out.print(header.getText());
-  }
 
 
  // @Override
@@ -43,4 +40,11 @@ public class HomePage extends Page {
  public void init(final WebDriver driver) {
    PageFactory.initElements(driver, this);
  }
+
+    //Print title to console
+    public String headerText() {
+        return driver.getTitle();
+    }
+
+
 }
