@@ -1,5 +1,6 @@
 package atsdsi.framework;
 
+import atsdsi.framework.tests.LoginTest;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
@@ -11,7 +12,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import ru.stqa.selenium.factory.WebDriverPool;
 
 @RunWith(Suite.class)
-@SuiteClasses({SampleMgfTest.class})
+@SuiteClasses({LoginTest.class})
 public class MgfTestSuite {
 
   @Rule

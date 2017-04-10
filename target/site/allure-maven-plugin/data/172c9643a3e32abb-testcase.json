@@ -1,0 +1,137 @@
+{
+  "uid" : "172c9643a3e32abb",
+  "name" : "testLoginPageElements",
+  "title" : "Login page elements test",
+  "time" : {
+    "start" : 1491833683220,
+    "stop" : 1491833690354,
+    "duration" : 7134
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 6
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "f45d4831fd0ccaf0",
+    "name" : "atsdsi.framework.tests.LoginTest",
+    "title" : "Login test"
+  },
+  "steps" : [ {
+    "name" : "Verify[true, 1, Check login image size]",
+    "title" : "Check login image size",
+    "time" : {
+      "start" : 1491833690211,
+      "stop" : 1491833690213,
+      "duration" : 2
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Verify[true, 2, Check login image source]",
+    "title" : "Check login image source",
+    "time" : {
+      "start" : 1491833690229,
+      "stop" : 1491833690229,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Verify[true, 3, Check email presents and placeholder]",
+    "title" : "Check email presents and placeholder",
+    "time" : {
+      "start" : 1491833690257,
+      "stop" : 1491833690257,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Verify[true, 4, Check password presents and placeholder]",
+    "title" : "Check password presents and placeholder",
+    "time" : {
+      "start" : 1491833690284,
+      "stop" : 1491833690284,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Verify[true, 5, Check LOG IN button]",
+    "title" : "Check LOG IN button",
+    "time" : {
+      "start" : 1491833690311,
+      "stop" : 1491833690311,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "Verify[true, 6, Check forgot password link]",
+    "title" : "Check forgot password link",
+    "time" : {
+      "start" : 1491833690351,
+      "stop" : 1491833690351,
+      "duration" : 0
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  } ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "JUnit"
+  }, {
+    "name" : "language",
+    "value" : "JAVA"
+  }, {
+    "name" : "suite-name",
+    "value" : "atsdsi.framework.tests.LoginTest"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "thread",
+    "value" : "21216@DESKTOP-08EBJC5.main(1)"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-08EBJC5"
+  } ],
+  "parameters" : [ ]
+}
