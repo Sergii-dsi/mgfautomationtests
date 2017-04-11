@@ -1,15 +1,15 @@
 atsdsi\framework\pages\LoginPage.class
+atsdsi\framework\tests\GUI_001_NotLoggedPagesTest.class
 atsdsi\framework\pages\Page.class
 atsdsi\framework\MgfTestBase$1.class
 atsdsi\framework\MgfTestSuite.class
 atsdsi\framework\SampleMgfTest.class
-atsdsi\framework\tests\LoginTest.class
 atsdsi\framework\elements\Title.class
 atsdsi\framework\MgfTestSuite$1.class
 atsdsi\framework\util\CustomLogger.class
 atsdsi\framework\MgfTestBase$2.class
-atsdsi\framework\pages\HomePage.class
 atsdsi\framework\elements\Element.class
 atsdsi\framework\util\PropertyLoader.class
 atsdsi\framework\MgfTestBase.class
 atsdsi\framework\entities\User.class
+atsdsi\framework\pages\FaqPage.class

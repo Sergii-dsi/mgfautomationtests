@@ -22,6 +22,7 @@ public class LoginPage extends Page {
     @FindBy(how = How.TAG_NAME, using = "title")
     @CacheLookup
     public WebElement header;
+    //Main--------------------------------------------------------------------------------------------------------------
     @FindBy(how = How.CLASS_NAME, using = "pic")
     public WebElement loginPic;
     @FindBy(how = How.ID, using = "email")
@@ -32,6 +33,34 @@ public class LoginPage extends Page {
     public WebElement buttonLogin;
     @FindBy(how = How.ID, using = "forgot-password")
     public WebElement linkForgotPass;
+    //Header------------------------------------------------------------------------------------------------------------
+    @FindBy(how = How.XPATH, using = "//li[@id='login-btn-2']/a")
+    public WebElement buttonHeaderFAQ;
+    @FindBy(how = How.XPATH, using = "//li[@id='login-btn-5']/a")
+    public WebElement buttonHeaderReviews;
+    @FindBy(how = How.XPATH, using = "//li[@id='login-btn-3']/a")
+    public WebElement buttonHeaderAbout;
+    @FindBy(how = How.XPATH, using = "//li[@id='login-btn-4']/a")
+    public WebElement buttonHeaderPreview;
+    @FindBy(how = How.XPATH, using = "//li[@id='login-btn-1']/a")
+    public WebElement buttonHeaderSignUp;
+    ///Footer-----------------------------------------------------------------------------------------------------------
+    @FindBy(how = How.XPATH, using = "//div[@id='footer-links']//li[1]/a")
+    public WebElement linkFooterTerms;
+    @FindBy(how = How.XPATH, using = "//div[@id='footer-links']//li[2]/a")
+    public WebElement linkFooterPrivacyPolicy;
+    @FindBy(how = How.XPATH, using = "//div[@id='footer-links']//li[3]/a")
+    public WebElement linkFooter2257;
+    @FindBy(how = How.XPATH, using = "//div[@id='footer-links']//li[4]/a")
+    public WebElement linkFooterDMCA;
+    @FindBy(how = How.XPATH, using = "//div[@id='footer-links']//li[5]/a")
+    public WebElement linkFooterBlog;
+    @FindBy(how = How.XPATH, using = "//div[@id='footer-links']//li[6]/a")
+    public WebElement linkFooterHelp;
+    @FindBy(how = How.XPATH, using = "//div[@id='footer-links']//li[7]/a")
+    public WebElement linkFooterContactUs;
+
+
 
 
 

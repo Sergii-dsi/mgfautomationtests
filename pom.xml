@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>atsdsi</groupId>
   <artifactId>mgfautomationtests</artifactId>
-  <version>framework 0.12</version>
+  <version>framework 0.21</version>
   <packaging>jar</packaging>
   <properties>
     <allure.version>1.5.2</allure.version>

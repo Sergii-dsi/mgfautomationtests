@@ -1,11 +1,9 @@
 package atsdsi.framework;
 
-import atsdsi.framework.util.CustomLogger;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
-import atsdsi.framework.pages.HomePage;
+import atsdsi.framework.pages.FaqPage;
 import ru.yandex.qatools.allure.annotations.*;
 
 
@@ -13,12 +11,12 @@ import static org.junit.Assert.assertTrue;
 
 public class SampleMgfTest extends MgfTestBase {
 
-  private HomePage homepage;
+  private FaqPage homepage;
 
 
   @Before
   public void initPageObjects() {
-    homepage = PageFactory.initElements(driver, HomePage.class);
+    homepage = PageFactory.initElements(driver, FaqPage.class);
   }
   @Title("First cool check3")
   @Test

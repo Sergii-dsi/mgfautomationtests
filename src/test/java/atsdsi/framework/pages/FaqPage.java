@@ -15,18 +15,31 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
 
-/**
- * Sample page
- */
-public class HomePage extends Page {
+
+public class FaqPage extends Page {
 
   @FindBy(how = How.TAG_NAME, using = "title")
   @CacheLookup
-  public WebElement mainPageHeader;
+  public WebElement title;
 
+    //Header------------------------------------------------------------------------------------------------------------
+    @FindBy(how = How.XPATH, using = "//li[@id='btn-1']/a")
+    public WebElement buttonHeaderHome;
+    @FindBy(how = How.XPATH, using = "//li[@id='btn-7']/a")
+    public WebElement buttonHeaderReviews;
+    //Main--------------------------------------------------------------------------------------------------------------
+    @FindBy(how = How.XPATH, using = "//div[@id='content-terms']/h1")
+    public WebElement h1;
+    @FindBy(how = How.LINK_TEXT, using = "Girls")
+    public WebElement linkGirlsTab;
+    @FindBy(how = How.LINK_TEXT, using = "Guys")
+    public WebElement linkGuysTab;
+    @FindBy(how = How.LINK_TEXT, using = "Features")
+    public WebElement linkFeaturesTab;
+    @FindBy(how = How.LINK_TEXT, using = "General")
+    public WebElement linkGeneralTab;
 
-
-  public HomePage(WebDriver webDriver) {
+  public FaqPage(WebDriver webDriver) {
     super(webDriver);
   }
 
@@ -34,7 +47,7 @@ public class HomePage extends Page {
 
  // @Override
   /*
-  Как это работает?! В методе init() мы вызываем PageFactory.initElements(driver, this);.
+   В методе init() мы вызываем PageFactory.initElements(driver, this);.
    Драйвер не начинает искать элементы на странице сразу же, а ищет их как только мы обращаемся к полю класса.
     Например строка searchButton.click(); «превращается» в driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
    */
