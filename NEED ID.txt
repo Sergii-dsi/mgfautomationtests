@@ -1,0 +1,10 @@
+About page:
+CLASS_NAME, using = "sproutvideo-player"
+XPATH, using = "//div[@class='top-box']//a[@class='button']"
+XPATH, using = "//div[@class='wide-block']//a[@class='button']"
+XPATH, using = "//div[@class='girls-holder']/div[@class='hold']/a[@class='button']"
+XPATH, using = "//div[@class='wide-block wide-block2']/div[@class='hold']/a[@class='button']"
+Faq page:
+TAB LINKS
+Login Page:
+

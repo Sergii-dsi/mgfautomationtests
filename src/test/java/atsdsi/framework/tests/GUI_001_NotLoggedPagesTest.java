@@ -1,43 +1,47 @@
 package atsdsi.framework.tests;
-import atsdsi.framework.MgfTestBase;
-import atsdsi.framework.pages.FaqPage;
-import atsdsi.framework.pages.LoginPage;
-import atsdsi.framework.pages.ReviewsPage;
+import atsdsi.framework.TestBase;
+import atsdsi.framework.pages.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import ru.yandex.qatools.allure.annotations.Title;
+import java.util.List;
+import java.util.ArrayList;
 
-import atsdsi.framework.util.CustomLogger;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.support.PageFactory;
-import ru.yandex.qatools.allure.annotations.*;
 import static org.junit.Assert.assertTrue;
 
-public class GUI_001_NotLoggedPagesTest extends MgfTestBase {
+public class GUI_001_NotLoggedPagesTest extends TestBase {
 
     private LoginPage loginpage;
     private FaqPage faqpage;
     private ReviewsPage reviewspage;
+    private AboutPage aboutpage;
+    private GirlPage girlpage;
+    private PreviewPage previewpage;
 
 
     @Before
-    @Title("Login functionality tests")
+    @Title("GUI tests for Not Logged User ")
     public void initPageObjects() {
         loginpage = PageFactory.initElements(driver, LoginPage.class);
         faqpage = PageFactory.initElements(driver, FaqPage.class);
         reviewspage = PageFactory.initElements(driver, ReviewsPage.class);
+        aboutpage = PageFactory.initElements(driver, AboutPage.class);
+        girlpage = PageFactory.initElements(driver, GirlPage.class);
+        previewpage = PageFactory.initElements(driver, PreviewPage.class);
     }
-    @Title("Login page elements test")
+    @Title("Pages elements test")
     @Test
     public void testLoginPageElements() {
+        /*
         driver.get(baseUrl);
         //System.out.print("Size of login picture is " +loginpage.linkFooterContactUs.getText()+ "\n");
         //----------------------------------------------LOGIN PAGE------------------------------------------------------
         //----------------------------------------------Login hold------------------------------------------------------
-        /*
+
         Verify(checkElementSize(loginpage.loginPic,"(460, 177)"),1,"Check login image size");
         Verify(checkAttributeValue(loginpage.loginPic,"src","https://mygirlfund.com/assets/ctx/fc12d7b/images3/login-pic.jpg"),
                 2,"Check login image source");
@@ -66,7 +70,7 @@ public class GUI_001_NotLoggedPagesTest extends MgfTestBase {
                 //checkLinkNavigationAndBack(loginpage.linkFooterHelp, "...")&&
                 //checkLinkNavigationAndBack(loginpage.linkFooterContactUs, "...")
                 ,9,"Check footer navigation and links for not logged user");
-                */
+
         //----------------------------------------------FAQ PAGE--------------------------------------------------------
         clickElement(loginpage.buttonHeaderFAQ);
         clickElement(faqpage.linkGirlsTab);
@@ -79,18 +83,39 @@ public class GUI_001_NotLoggedPagesTest extends MgfTestBase {
         Verify(faqpage.h1.getText(),"About mygirlfund – Social networking at its best!",13,"Check FAQ page - Fratures tab");
         //Add more veridy points here
         //..........
-        //----------------------------------------------REVIEWS PAGE--------------------------------------------------------
+        //----------------------------------------------REVIEWS PAGE----------------------------------------------------
         clickElement(faqpage.buttonHeaderReviews);
         Verify(isPresentAndDisplayed(reviewspage.filmRollPrev)&&
                 isPresentAndDisplayed(reviewspage.filmRollNext)&&
                 isPresentAndDisplayed(reviewspage.filmRoll),14,"Check Reviews page and film roll presents");
+
+        //----------------------------------------------ABOUT PAGE------------------------------------------------------
         clickElement(reviewspage.buttonHeaderAbout);
+        Verify(aboutpage.h1.getText(),"THE GIRL NEXT DOOR IS NOW ONLINE",15,"Check About page presents");
+        Verify(isPresentAndDisplayed(aboutpage.videoFrame),16,"Check About page - video frame");
+        Verify(checkLinkNavigationAndBack(aboutpage.buttonCreateMyFreeAccount1,"MyGirlFund: Sign Up")&&
+                        checkLinkNavigationAndBack(aboutpage.buttonCreateMyFreeAccount2,"MyGirlFund: Sign Up"),
+                17,"Check About page - buttons Create Free Account");
+        Verify(checkLinkNavigationAndBack(aboutpage.buttonConnect1on1,"MyGirlFund: Sign Up"),
+               18,"Check About page - button Connect One on One");
+        Verify(checkLinkNavigationAndBack(aboutpage.buttonConnectWithVirtGF,"MyGirlFund: Sign Up"),
+              19,"Check About page - button Connect with a virtual girlfriend");
+        Verify(checkAllGirlsListIsPresentOnAboutPage(),20,"Check About page - girls list");
+*/
+        //----------------------------------------------PREVIEW PAGE----------------------------------------------------
+        goTo("preview");
+        clickElement(previewpage.buttonHome);
 
 
 
 
 
-        System.out.print("Text is " +reviewspage.h1.getText());
+
+
+
+
+
+      // System.out.print("Text is " +aboutpage.h1.getText());
     }
 
 
