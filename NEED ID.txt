@@ -8,3 +8,8 @@ Faq page:
 TAB LINKS
 Login Page:
 
+Preview page:
+//ul[@id='interior-sub-nav']/li[@class='girls-link']/span[@class='active']   and dropdown options
+
+
+

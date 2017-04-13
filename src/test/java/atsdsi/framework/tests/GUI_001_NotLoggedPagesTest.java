@@ -5,13 +5,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import ru.yandex.qatools.allure.annotations.Title;
 import java.util.List;
-import java.util.ArrayList;
 
-import static org.junit.Assert.assertTrue;
+/*------------------------------------------------------------------------------------------------------*/
+/*Test performs verification for all available web elements, pages and access level for not logged user.*/
+/*------------------------------------------------------------------------------------------------------*/
+
 
 public class GUI_001_NotLoggedPagesTest extends TestBase {
 
@@ -36,9 +37,10 @@ public class GUI_001_NotLoggedPagesTest extends TestBase {
     @Title("Pages elements test")
     @Test
     public void testLoginPageElements() {
-        /*
+        String titleLoginPage = "Chat with Girls | Talk to Sexy Girls at mygirlfund";
+        String titleSignUpPage = "MyGirlFund: Sign Up";
+
         driver.get(baseUrl);
-        //System.out.print("Size of login picture is " +loginpage.linkFooterContactUs.getText()+ "\n");
         //----------------------------------------------LOGIN PAGE------------------------------------------------------
         //----------------------------------------------Login hold------------------------------------------------------
 
@@ -59,7 +61,7 @@ public class GUI_001_NotLoggedPagesTest extends TestBase {
                checkLinkNavigationAndBack(loginpage.buttonHeaderReviews,"Reviews of mygirlfund")&&
                checkLinkNavigationAndBack(loginpage.buttonHeaderAbout,"Join MyGirlFund|Chat, Flirt and Cam with Girls Online")&&
                checkLinkNavigationAndBack(loginpage.buttonHeaderPreview,"Private Sex Chat | Meet Girls You Won't Find Elsewhere")&&
-               checkLinkNavigationAndBack(loginpage.buttonHeaderSignUp,"MyGirlFund: Sign Up"),
+               checkLinkNavigationAndBack(loginpage.buttonHeaderSignUp,titleSignUpPage),
                8,"Check header navigation and buttons for not logged user");
         //----------------------------------------------Footer navigagation---------------------------------------------
         Verify(checkLinkNavigationAndBack(loginpage.linkFooterTerms, "MyGirlFund: Terms Of Service")&&
@@ -80,7 +82,8 @@ public class GUI_001_NotLoggedPagesTest extends TestBase {
         clickElement(faqpage.linkGeneralTab);
         Verify(faqpage.h1.getText(),"General FAQ",12,"Check FAQ page - General FAQ tab");
         clickElement(faqpage.linkFeaturesTab);
-        Verify(faqpage.h1.getText(),"About mygirlfund – Social networking at its best!",13,"Check FAQ page - Fratures tab");
+        System.out.print(faqpage.h1.getText());
+        Verify(isPresentAndDisplayed(faqpage.subNavigation),13,"Check FAQ page - Fratures tab subnav is present");
         //Add more veridy points here
         //..........
         //----------------------------------------------REVIEWS PAGE----------------------------------------------------
@@ -93,31 +96,99 @@ public class GUI_001_NotLoggedPagesTest extends TestBase {
         clickElement(reviewspage.buttonHeaderAbout);
         Verify(aboutpage.h1.getText(),"THE GIRL NEXT DOOR IS NOW ONLINE",15,"Check About page presents");
         Verify(isPresentAndDisplayed(aboutpage.videoFrame),16,"Check About page - video frame");
-        Verify(checkLinkNavigationAndBack(aboutpage.buttonCreateMyFreeAccount1,"MyGirlFund: Sign Up")&&
-                        checkLinkNavigationAndBack(aboutpage.buttonCreateMyFreeAccount2,"MyGirlFund: Sign Up"),
+        Verify(checkLinkNavigationAndBack(aboutpage.buttonCreateMyFreeAccount1,titleSignUpPage)&&
+                        checkLinkNavigationAndBack(aboutpage.buttonCreateMyFreeAccount2,titleSignUpPage),
                 17,"Check About page - buttons Create Free Account");
-        Verify(checkLinkNavigationAndBack(aboutpage.buttonConnect1on1,"MyGirlFund: Sign Up"),
+        Verify(checkLinkNavigationAndBack(aboutpage.buttonConnect1on1,titleSignUpPage),
                18,"Check About page - button Connect One on One");
-        Verify(checkLinkNavigationAndBack(aboutpage.buttonConnectWithVirtGF,"MyGirlFund: Sign Up"),
+        Verify(checkLinkNavigationAndBack(aboutpage.buttonConnectWithVirtGF,titleSignUpPage),
               19,"Check About page - button Connect with a virtual girlfriend");
         Verify(checkAllGirlsListIsPresentOnAboutPage(),20,"Check About page - girls list");
-*/
+
         //----------------------------------------------PREVIEW PAGE----------------------------------------------------
         goTo("preview");
-        clickElement(previewpage.buttonHome);
-
-
-
-
-
-
-
-
-
-
-      // System.out.print("Text is " +aboutpage.h1.getText());
+        Verify(checkLinkNavigationAndBack(previewpage.logo,"Chat with Girls | Talk to Sexy Girls at mygirlfund"),
+                21,"Check Preview page - Logo link");
+        Verify(checkLinkListNavigationAndBack(previewpage.listHeaderButtons,titleLoginPage),
+                22,"Check Preview page - Header navigation access level");
+        Verify(checkLinkNavigationAndBack(previewpage.buttonSignup,titleSignUpPage),
+                23,"Check Preview page - Sign Up button");
+        Verify(checkTheGirlsDropdownPrevievPage(),24,"Check Preview page - The Girls dropdown");
+        Verify(checkGirlsPagesNavigation(previewpage.listGirlsLinks),25,"Check Preview page - Girls pages navigation");
+        Verify(previewpage.listGirlsLinks.size(),30,26,"Check Preview page - Girls pages amount");
+        Verify(checkLinkListNavigationAndBack(previewpage.listPaging,titleLoginPage),27,"Check Preview page - Paging navigacion and access lvl");
     }
 
+    //---------------------------------------------Advanced tools-------------------------------------------------------
+
+    protected boolean checkAllGirlsListIsPresentOnAboutPage( ){
+        try{
+            for (int i = 1; i < 9; i++)
+            {
+                mouseOverElement(driver.findElement(By.xpath("//ul[@class='girls-list']/li["+i+"]"))); //id[]
+                //WaitFor(1/8); //Uncomment if crash here
+                WebElement tempElement = driver.findElement(By.xpath("//ul[@class='girls-list']/li["+i+"]/a"));
+                tempElement.isDisplayed();
+            }
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+
+    }
+    //Perform test - all dropdown options links to login page
+    protected boolean checkTheGirlsDropdownPrevievPage( ){
+        try{
+
+            for (int i = 1; i < 7; i++)
+            {
+                mouseOverElement(driver.findElement(By.xpath("//ul[@id='interior-sub-nav']/li[@class='girls-link']")));
+                //WaitFor(1/8); //Uncomment if crash here
+                WebElement tempElement = driver.findElement(By.xpath("//ul[@class='girls-drop']/li["+i+"]/a"));
+                checkLinkNavigationAndBack(tempElement,"Chat with Girls | Talk to Sexy Girls at mygirlfund");//Login page
+
+            }
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+
+    }
+    ////Perform test - all girls shapshots links to the accounts pages
+    protected boolean checkGirlsPagesNavigation(List<WebElement> list ){
+        try
+        {
+            String accountName;
+            for(int i=0;i<6;i++){ //use i<list.size() for all
+                WaitIsDisplayed(list.get(i));
+                accountName = getAccountNameFromLink(list.get(i).getAttribute("href"));
+                System.out.println(accountName);
+                clickElementWhenPresent(list.get(i));
+                WaitIsDisplayed(girlpage.h2Name);
+                if (!girlpage.h2Name.getText().equals(accountName)){
+                    System.out.println("Test failed");
+                    return false;
+                }
+                System.out.println(i+1+ " account(s) link checked");
+                driver.navigate().back();
+            }
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+
+    }
+
+    protected String getAccountNameFromLink(String link){
+        return link.replaceAll(baseUrl,"");
+    }
 
 
 

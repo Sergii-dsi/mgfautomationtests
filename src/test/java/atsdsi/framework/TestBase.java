@@ -202,6 +202,21 @@ public class TestBase {
         //Saving screenshot section
         //.....
     }
+    @Step("{3}")
+    protected void Verify(int actual, int expected, int stepNumber, String message) {
+        boolean value = actual == expected;
+
+        if (stepNumber == -1) CustomLogger.TraceVerification(value, message );
+        else CustomLogger.TraceVerification(value, stepNumber, message);
+        //try
+        //{
+        Assert.assertTrue(value);
+        //}
+        // catch (Exception e){};
+
+        //Saving screenshot section
+        //.....
+    }
 
     @Step("{1}")
     protected void Verify(Boolean value, String message){
@@ -233,12 +248,29 @@ public class TestBase {
     //---------------------------------------------Checkers-------------------------------------------------------------
 ///<summary>
     /// Return true if element displayed
-    public static boolean isPresentAndDisplayed(final WebElement element) {
-        try {
-            return element.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
+    protected boolean isPresentAndDisplayed(final WebElement element, long timeoutInSeconds) {
+        for(int i = 0; i<timeoutInSeconds*2; i++) {
+
+            try {
+                if (element.isDisplayed())
+                    return true;
+            } catch (NoSuchElementException e) {
+                WaitFor(1/2);
+            }
         }
+        return false;
+    }
+    protected boolean isPresentAndDisplayed(final WebElement element) {
+        for(int i = 0; i<10; i++) {
+
+            try {
+                if (element.isDisplayed())
+                    return true;
+            } catch (NoSuchElementException e) {
+                WaitFor(1/2);
+            }
+        }
+        return false;
     }
     ///<summary>
     /// Determines whether an element with the specified attribute value is
@@ -317,7 +349,7 @@ public class TestBase {
     ///<summary>
     ///Click link and compare expected title then nav back
     protected boolean checkLinkNavigationAndBack(WebElement element, String expectedTitle) {
-        element.click();
+        clickElement(element);
         try{
             WaitForTitle(expectedTitle,5);
             driver.navigate().back();
@@ -327,6 +359,21 @@ public class TestBase {
         {
             CustomLogger.TraceVerification(false,e.toString());
             driver.navigate().back();
+            return false;
+        }
+    }
+
+    ///Click each link in list and compare expected title then nav back
+    protected boolean checkLinkListNavigationAndBack(List<WebElement> list, String expectedTitle) {
+        try
+        {
+            for(int i=0;i<list.size();i++){
+                checkLinkNavigationAndBack(list.get(i),expectedTitle);
+            }
+            return true;
+        }
+        catch (NoSuchElementException e)
+        {
             return false;
         }
     }
@@ -345,6 +392,10 @@ public class TestBase {
         WaitIsDisplayed(element,timeoutInSeconds);
         clickElement(element);
     }
+    protected void clickElementWhenPresent(WebElement element ) {
+        WaitIsDisplayed(element,5);
+        clickElement(element);
+    }
 
     ///<summary>
     /// Move mouse ubder the element when it to be displayed. Set waiter timeout in seconds
@@ -359,23 +410,5 @@ public class TestBase {
     }
 
     //---------------------------------------------Advanced tools-------------------------------------------------------
-    ///<summary>
-    /// Click element when it present. Set waiter timeout in seconds
-    protected boolean checkAllGirlsListIsPresentOnAboutPage( ){
-        try{
-            for (int i = 1; i < 9; i++)
-            {
-                mouseOverElement(driver.findElement(By.xpath("//ul[@class='girls-list']/li["+i+"]"))); //id[]
-                //WaitFor(1/8); //Uncomment if crash here
-                WebElement tempElement = driver.findElement(By.xpath("//ul[@class='girls-list']/li["+i+"]/a"));
-                tempElement.isDisplayed();
-            }
-            return true;
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
 
-    }
 }

@@ -1,0 +1,14 @@
+{
+  "testCases" : [ {
+    "uid" : "8be2159c959cf60d",
+    "name" : "testLoginPageElements",
+    "title" : "Pages elements test",
+    "time" : {
+      "start" : 1492088017289,
+      "stop" : 1492088078947,
+      "duration" : 61658
+    },
+    "severity" : "NORMAL",
+    "status" : "PASSED"
+  } ]
+}

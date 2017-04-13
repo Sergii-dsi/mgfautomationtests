@@ -1,0 +1,20 @@
+{
+  "hosts" : [ {
+    "title" : "DESKTOP-08EBJC5",
+    "threads" : [ {
+      "title" : "20716@DESKTOP-08EBJC5.main(1)",
+      "testCases" : [ {
+        "uid" : "8be2159c959cf60d",
+        "name" : "testLoginPageElements",
+        "title" : "Pages elements test",
+        "time" : {
+          "start" : 1492088017289,
+          "stop" : 1492088078947,
+          "duration" : 61658
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      } ]
+    } ]
+  } ]
+}

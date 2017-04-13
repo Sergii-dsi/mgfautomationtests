@@ -8,8 +8,10 @@ atsdsi\framework\util\PropertyLoader.class
 atsdsi\framework\TestBase.class
 atsdsi\framework\TestBase$2.class
 atsdsi\framework\TestSuite.class
+atsdsi\framework\pages\GirlPage.class
 atsdsi\framework\elements\Title.class
 atsdsi\framework\util\CustomLogger.class
+atsdsi\framework\pages\PreviewPage.class
 atsdsi\framework\elements\Element.class
 atsdsi\framework\entities\User.class
 atsdsi\framework\TestSuite$1.class

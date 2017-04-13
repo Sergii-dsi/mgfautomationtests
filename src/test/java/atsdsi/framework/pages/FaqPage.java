@@ -38,6 +38,10 @@ public class FaqPage extends Page {
     public WebElement linkFeaturesTab;
     @FindBy(how = How.LINK_TEXT, using = "General")
     public WebElement linkGeneralTab;
+    @FindBy(how = How.ID, using = "about-sub-nav-2")
+    public WebElement subNavigation;
+
+
 
   public FaqPage(WebDriver webDriver) {
     super(webDriver);

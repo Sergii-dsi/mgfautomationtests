@@ -8,7 +8,9 @@ C:\mgfautomationtests\src\test\java\atsdsi\framework\util\CustomLogger.java
 C:\mgfautomationtests\src\test\java\atsdsi\framework\tests\GUI_001_NotLoggedPagesTest.java
 C:\mgfautomationtests\src\test\java\atsdsi\framework\elements\Title.java
 C:\mgfautomationtests\src\test\java\atsdsi\framework\pages\ReviewsPage.java
+C:\mgfautomationtests\src\test\java\atsdsi\framework\pages\GirlPage.java
 C:\mgfautomationtests\src\test\java\atsdsi\framework\pages\Page.java
 C:\mgfautomationtests\src\test\java\atsdsi\framework\pages\LoginPage.java
+C:\mgfautomationtests\src\test\java\atsdsi\framework\pages\PreviewPage.java
 C:\mgfautomationtests\src\test\java\atsdsi\framework\pages\FaqPage.java
 C:\mgfautomationtests\src\test\java\atsdsi\framework\TestSuite.java

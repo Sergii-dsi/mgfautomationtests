@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>atsdsi</groupId>
   <artifactId>mgfautomationtests</artifactId>
-  <version>framework 0.21</version>
+  <version>framework 0.23</version>
   <packaging>jar</packaging>
   <properties>
     <allure.version>1.5.2</allure.version>
@@ -115,6 +115,11 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.0.0</version>
+
       </plugin>
     <!--Needed only to show reports locally. Run jetty:run and
     open localhost:8080 to show the report-->

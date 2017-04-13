@@ -1,11 +1,11 @@
 package atsdsi.framework.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.*;
 
-import org.openqa.selenium.support.PageFactory;
+import java.util.List;
+
+
 public class PreviewPage extends Page {
 
     @FindBy(how = How.TAG_NAME, using = "title")
@@ -13,7 +13,7 @@ public class PreviewPage extends Page {
     public WebElement title;
 
     //Header------------------------------------------------------------------------------------------------------------
-    @FindBy(how = How.ID, using = "logo")
+    @FindBy(how = How.XPATH, using = "//div[@id='logo']/a/img")//not clickable by ID
     public WebElement logo;
     @FindBy(how = How.ID, using = "btn-1i")
     public WebElement buttonHome;
@@ -43,8 +43,18 @@ public class PreviewPage extends Page {
     public WebElement buttonTags;
     @FindBy(how = How.XPATH, using = "//ul[@id='interior-sub-nav']/li[6]/a")
     public WebElement buttonSearch;
-
-
+    @FindAll(
+            {@FindBy(how = How.XPATH, using = "//div[@id='nav-interior']/ul/li[starts-with(@id, 'btn-')]")} //EXAMPLE: dropDown.findElements(By.xpath(".//option"));
+    )
+    public List<WebElement> listHeaderButtons;
+    @FindAll(
+            {@FindBy(how = How.XPATH, using = "//div[@id='gallery']/ul[@class='gallery-list']//a")}
+    )
+    public List<WebElement> listGirlsLinks;
+    @FindAll(
+            {@FindBy(how = How.XPATH, using = "//div[@id='paging']/a")}
+    )
+    public List<WebElement> listPaging;
 
 
 
