@@ -45,7 +45,7 @@ public class GUI_001_NotLoggedPagesTest extends TestBase {
         //----------------------------------------------Login hold------------------------------------------------------
 
         Verify(checkElementSize(loginpage.loginPic,"(460, 177)"),1,"Check login image size");
-        Verify(checkAttributeValue(loginpage.loginPic,"src","https://mygirlfund.com/assets/ctx/fc12d7b/images3/login-pic.jpg"),
+        Verify(checkAttributeValue(loginpage.loginPic,"src",baseUrl+"assets/ctx/fc12d7b/images3/login-pic.jpg"),
                 2,"Check login image source");
         Verify(checkAttributeValue(loginpage.inputEmail,"placeholder","name@example.com"),3,"Check email presents and placeholder");
         Verify(checkAttributeValue(loginpage.inputPassword,"placeholder","password"),4,"Check password presents and placeholder");
@@ -53,21 +53,21 @@ public class GUI_001_NotLoggedPagesTest extends TestBase {
         Verify(checkLinkNavigationAndBack(loginpage.linkForgotPass,"MyGirlFund: Forgot Password"),6,"Check forgot password link");
         //----------------------------------------------Header navigagation---------------------------------------------
         Verify(checkElementText(loginpage.buttonHeaderFAQ, "FAQ")&&
-               checkElementText(loginpage.buttonHeaderReviews,"Reviews")&&
-               checkElementText(loginpage.buttonHeaderAbout,"About")&&
-               checkElementText(loginpage.buttonHeaderPreview,"Preview")&&
-               checkElementText(loginpage.buttonHeaderSignUp, "SIGN UP"),7,"Check header buttons text");
+                checkElementText(loginpage.buttonHeaderReviews,"Reviews")&&
+                checkElementText(loginpage.buttonHeaderAbout,"About")&&
+                checkElementText(loginpage.buttonHeaderPreview,"Preview")&&
+                checkElementText(loginpage.buttonHeaderSignUp, "SIGN UP"),7,"Check header buttons text");
         Verify(checkLinkNavigationAndBack(loginpage.buttonHeaderFAQ,"Chat with Sexy Girls Today | mygirlfund FAQ")&&
-               checkLinkNavigationAndBack(loginpage.buttonHeaderReviews,"Reviews of mygirlfund")&&
-               checkLinkNavigationAndBack(loginpage.buttonHeaderAbout,"Join MyGirlFund|Chat, Flirt and Cam with Girls Online")&&
-               checkLinkNavigationAndBack(loginpage.buttonHeaderPreview,"Private Sex Chat | Meet Girls You Won't Find Elsewhere")&&
-               checkLinkNavigationAndBack(loginpage.buttonHeaderSignUp,titleSignUpPage),
-               8,"Check header navigation and buttons for not logged user");
+                        checkLinkNavigationAndBack(loginpage.buttonHeaderReviews,"Reviews of mygirlfund")&&
+                        checkLinkNavigationAndBack(loginpage.buttonHeaderAbout,"Join MyGirlFund|Chat, Flirt and Cam with Girls Online")&&
+                        checkLinkNavigationAndBack(loginpage.buttonHeaderPreview,"Private Sex Chat | Meet Girls You Won't Find Elsewhere")&&
+                        checkLinkNavigationAndBack(loginpage.buttonHeaderSignUp,titleSignUpPage),
+                8,"Check header navigation and buttons for not logged user");
         //----------------------------------------------Footer navigagation---------------------------------------------
         Verify(checkLinkNavigationAndBack(loginpage.linkFooterTerms, "MyGirlFund: Terms Of Service")&&
-                checkLinkNavigationAndBack(loginpage.linkFooterPrivacyPolicy,"MyGirlFund: Privacy Policy")&&
-                checkLinkNavigationAndBack(loginpage.linkFooter2257,"MyGirlFund: Compliance")&&
-                checkLinkNavigationAndBack(loginpage.linkFooterDMCA,"MyGirlFund: DMCA Notice & Takedown Policy")
+                        checkLinkNavigationAndBack(loginpage.linkFooterPrivacyPolicy,"MyGirlFund: Privacy Policy")&&
+                        checkLinkNavigationAndBack(loginpage.linkFooter2257,"MyGirlFund: Compliance")&&
+                        checkLinkNavigationAndBack(loginpage.linkFooterDMCA,"MyGirlFund: DMCA Notice & Takedown Policy")
                 //checkLinkNavigationAndBack(loginpage.linkFooterBlog, "...")&&
                 //checkLinkNavigationAndBack(loginpage.linkFooterHelp, "...")&&
                 //checkLinkNavigationAndBack(loginpage.linkFooterContactUs, "...")
@@ -100,9 +100,9 @@ public class GUI_001_NotLoggedPagesTest extends TestBase {
                         checkLinkNavigationAndBack(aboutpage.buttonCreateMyFreeAccount2,titleSignUpPage),
                 17,"Check About page - buttons Create Free Account");
         Verify(checkLinkNavigationAndBack(aboutpage.buttonConnect1on1,titleSignUpPage),
-               18,"Check About page - button Connect One on One");
+                18,"Check About page - button Connect One on One");
         Verify(checkLinkNavigationAndBack(aboutpage.buttonConnectWithVirtGF,titleSignUpPage),
-              19,"Check About page - button Connect with a virtual girlfriend");
+                19,"Check About page - button Connect with a virtual girlfriend");
         Verify(checkAllGirlsListIsPresentOnAboutPage(),20,"Check About page - girls list");
 
         //----------------------------------------------PREVIEW PAGE----------------------------------------------------

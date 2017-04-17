@@ -18,8 +18,9 @@ public class GirlPage extends Page {
 
     //Main--------------------------------------------------------------------------------------------------------------
 
-    @FindBy(how = How.ID, using = "page-title-girl")
+    @FindBy(how = How.XPATH, using = "//div[@id='right-column']//h2")
     public WebElement h2Name;
+
 
 
 

@@ -25,6 +25,8 @@ public class LoginPage extends Page {
     //Main--------------------------------------------------------------------------------------------------------------
     @FindBy(how = How.CLASS_NAME, using = "pic")
     public WebElement loginPic;
+    @FindBy(how = How.CLASS_NAME, using = "error center")
+    public WebElement errorMessage;
     @FindBy(how = How.ID, using = "email")
     public WebElement inputEmail;
     @FindBy(how = How.ID, using = "password")

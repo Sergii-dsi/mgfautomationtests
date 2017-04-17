@@ -4,6 +4,7 @@ atsdsi\framework\pages\Page.class
 atsdsi\framework\TestBase$1.class
 atsdsi\framework\pages\ReviewsPage.class
 atsdsi\framework\pages\AboutPage.class
+atsdsi\framework\tests\FUNC_001_LoginTest.class
 atsdsi\framework\util\PropertyLoader.class
 atsdsi\framework\TestBase.class
 atsdsi\framework\TestBase$2.class
@@ -15,5 +16,6 @@ atsdsi\framework\pages\PreviewPage.class
 atsdsi\framework\elements\Element.class
 atsdsi\framework\entities\User.class
 atsdsi\framework\TestSuite$1.class
+atsdsi\framework\pages\GuyPage.class
 atsdsi\framework\ExampleTest.class
 atsdsi\framework\pages\FaqPage.class

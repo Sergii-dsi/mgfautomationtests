@@ -1,4 +1,6 @@
 package atsdsi.framework;
+import atsdsi.framework.pages.GuyPage;
+import atsdsi.framework.pages.LoginPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.*;
 import ru.stqa.selenium.factory.WebDriverPool;
+import org.openqa.selenium.firefox.GeckoDriverService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,94 +31,103 @@ import java.util.concurrent.TimeUnit;
  */
 public class TestBase {
 
-  protected static String gridHubUrl;
-  protected static String baseUrl;
-  protected static Capabilities capabilities;
+    protected static String gridHubUrl;
+    protected static String baseUrl, guyEmail, guyPassword, girlEmail, girlPassword, guyNickname, girlNickname;
+    protected static Capabilities capabilities;
 
-  protected WebDriver driver;
+    protected WebDriver driver;
 
-  //Properties, main and grid
-  @ClassRule
-  public static ExternalResource webDriverProperties = new ExternalResource() {
-    @Override
-    protected void before() throws Throwable {
-      baseUrl = PropertyLoader.loadProperty("site.url");
-      gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
-      baseUrl = PropertyLoader.loadProperty("site.url");
-      gridHubUrl = PropertyLoader.loadProperty("grid.url");
-      if ("".equals(gridHubUrl)) {
-        gridHubUrl = null;
-      }
-      capabilities = PropertyLoader.loadCapabilities();
+    //Properties, main and grid
+    @ClassRule
+    public static ExternalResource webDriverProperties = new ExternalResource() {
+        @Override
+        protected void before() throws Throwable {
+            baseUrl = PropertyLoader.loadProperty("site.url");
+            gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
+            baseUrl = PropertyLoader.loadProperty("site.url");
+            gridHubUrl = PropertyLoader.loadProperty("grid.url");
+            guyEmail = PropertyLoader.loadProperty("guy_email");
+            guyPassword = PropertyLoader.loadProperty("guy_password");
+            girlEmail = PropertyLoader.loadProperty("girl_email");
+            girlPassword = PropertyLoader.loadProperty("girl_password");
+            guyNickname = PropertyLoader.loadProperty("guy_nickname");
+            girlNickname = PropertyLoader.loadProperty("girl_nickname");
+
+            if ("".equals(gridHubUrl)) {
+                gridHubUrl = null;
+            }
+            capabilities = PropertyLoader.loadCapabilities();
+        };
     };
-  };
-  //Starting browser section
-  @Rule
-  public ExternalResource webDriver = new ExternalResource()
-  {
-    @Override
-    protected void before() throws Throwable {
-      //driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
-        if ("chrome".equals(capabilities.getBrowserName()))
-        {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("start-maximized");
-            DesiredCapabilities chrome = DesiredCapabilities.chrome();
-            chrome.setCapability(ChromeOptions.CAPABILITY, options);
-            driver = WebDriverPool.DEFAULT.getDriver(chrome);
-            //driver = WebDriverPool.DEFAULT.getDriver(DesiredCapabilities.internetExplorer());
+    //Starting browser section
+    @Rule
+    public ExternalResource webDriver = new ExternalResource()
+    {
+        @Override
+        protected void before() throws Throwable {
+            //driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
+            if ("chrome".equals(capabilities.getBrowserName()))
+            {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("start-maximized");
+                options.addArguments("--always-authorize-plugins");
 
-        }
-        else
-        {
-            System.out.print(capabilities.getBrowserName());
-            driver = WebDriverPool.DEFAULT.getDriver(capabilities);
-        }
+                DesiredCapabilities chrome = DesiredCapabilities.chrome();
+                chrome.setCapability(ChromeOptions.CAPABILITY, options);
+                driver = WebDriverPool.DEFAULT.getDriver(chrome);
+                //driver = WebDriverPool.DEFAULT.getDriver(DesiredCapabilities.internetExplorer());
+
+            }
+            else
+            {
+                System.out.print(capabilities.getBrowserName());
+                driver = WebDriverPool.DEFAULT.getDriver(capabilities);
+            }
 
 
+        };
     };
-  };
 
-  ///Navigate to specified url, when parameter needs only part without main. Example: goTo("login");
-  protected void goTo(String subUrl)
-  {
-      driver.navigate().to(baseUrl+subUrl);
-  }
+    ///Navigate to specified url, when parameter needs only part without main. Example: goTo("login");
+    protected void goTo(String subUrl)
+    {
+        driver.navigate().to(baseUrl+subUrl);
+    }
 
-  ///----------------------------------------------Waiters--------------------------------------------------------------
-  protected static final Logger log = LoggerFactory.getLogger(CustomLogger.class);
+    ///----------------------------------------------Waiters--------------------------------------------------------------
+    protected static final Logger log = LoggerFactory.getLogger(CustomLogger.class);
 
-  //Custom waiter. NOT RECOMMENDED TO USE for events waits
-  protected void WaitFor(long timeoutInSeconds)  {
-      long timeoutInMillis=timeoutInSeconds*1000;
-      try {
+    //Custom waiter. NOT RECOMMENDED TO USE for events waits
+    protected void WaitFor(long timeoutInSeconds)  {
+        long timeoutInMillis=timeoutInSeconds*1000;
+        try {
             Thread.sleep(timeoutInMillis);
-      }
-      catch (InterruptedException e) {
+        }
+        catch (InterruptedException e) {
             e.printStackTrace();
-      }
+        }
 
-      //driver.manage().timeouts().implicitlyWait(timeoutInSeconds, TimeUnit.SECONDS);
-      //Sleeper.SYSTEM_SLEEPER.sleep( new Duration(timeoutInSeconds,TimeUnit.SECONDS));
+        //driver.manage().timeouts().implicitlyWait(timeoutInSeconds, TimeUnit.SECONDS);
+        //Sleeper.SYSTEM_SLEEPER.sleep( new Duration(timeoutInSeconds,TimeUnit.SECONDS));
 
-  }
-  //Set timeout value in seconds and wait with step [1/2sec] until element is displayed.
-  //It means checking every 1/2 sec. You can decrease parameter if it stable
-  protected void WaitIsDisplayed(WebElement element,int timeoutInSeconds)  {
-      for(int i=0;i<timeoutInSeconds*2;i++) {
-          try{
-              if (element.isDisplayed())
-                  return;
-             }
-             catch (NoSuchElementException e)
-             {
-                 WaitFor(1/2);
-             }
-      }
-      element.isDisplayed();
-  }
-  //5 sec by default
-  protected void WaitIsDisplayed(WebElement element)  {
+    }
+    //Set timeout value in seconds and wait with step [1/2sec] until element is displayed.
+    //It means checking every 1/2 sec. You can decrease parameter if it stable
+    protected void WaitIsDisplayed(WebElement element,int timeoutInSeconds)  {
+        for(int i=0;i<timeoutInSeconds*2;i++) {
+            try{
+                if (element.isDisplayed())
+                    return;
+            }
+            catch (NoSuchElementException e)
+            {
+                WaitFor(1/2);
+            }
+        }
+        element.isDisplayed();
+    }
+    //5 sec by default
+    protected void WaitIsDisplayed(WebElement element)  {
         for(int i = 0; i<6; i++) {
             try{
                 if (element.isDisplayed())
@@ -182,7 +194,7 @@ public class TestBase {
     {
         if (stepNumber == -1) CustomLogger.TraceVerification(value, message );
         else CustomLogger.TraceVerification(value, stepNumber, message);
-                   Assert.assertTrue(value);
+        Assert.assertTrue(value);
 
 
 
@@ -275,7 +287,7 @@ public class TestBase {
     ///<summary>
     /// Determines whether an element with the specified attribute value is
     /// displayed.
-     protected boolean isElementPresent(By by) {
+    protected boolean isElementPresent(By by) {
         try
         {
             driver.findElement(by);
@@ -379,6 +391,14 @@ public class TestBase {
     }
 
     //---------------------------------------------Element tools--------------------------------------------------------
+
+    public void switchToFrame(String id){
+        driver.switchTo().frame(id);
+    }
+
+    public void switchToDefContent(){
+        driver.switchTo().defaultContent();
+    }
     ///<summary>
     /// Click element when it to be clickable. Set waiter timeout in seconds
     protected void clickElement(WebElement element){
@@ -409,6 +429,54 @@ public class TestBase {
         this.mouseOverElement(element,5);
     }
 
+    protected void setText(WebElement element, String text){
+        WaitIsDisplayed(element);
+        element.sendKeys(text);
+    }
+
     //---------------------------------------------Advanced tools-------------------------------------------------------
+    //Perform login action with specified credentials
+    public void Login(String email, String password)  {
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.init(driver);
+        setText(loginpage.inputEmail,email);
+        setText(loginpage.inputPassword,password);
+        clickElement(loginpage.buttonLogin);
+        switchToFrame("pageFrame");
+    }
+    //Perform login action with the Guy account by default
+    public void LoginGuy()  {
+//        setText(driver.findElement(By.id("email")),guyEmail);
+//        setText(driver.findElement(By.id("password")),guyPassword);
+//        clickElement(driver.findElement(By.id("btn-submit")));
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.init(driver);
+        setText(loginpage.inputEmail,guyEmail);
+        setText(loginpage.inputPassword,guyPassword);
+        clickElement(loginpage.buttonLogin);
+        switchToFrame("pageFrame");
+    }
+    //Perform login action with the Girl account by default
+    public void LoginGirl()  {
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.init(driver);
+        setText(loginpage.inputEmail,girlEmail);
+        setText(loginpage.inputPassword,girlPassword);
+        clickElement(loginpage.buttonLogin);
+        switchToFrame("pageFrame");
+    }
+    public void Logout(){
+        //driver.get(baseUrl);
+        //driver.switchTo().frame("pageFrame");
+        clickElementWhenPresent(driver.findElement(By.xpath("//div[@id='logoutlink']/a")));
+    }
+
+    public String getLoginErrorText(){
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.init(driver);
+        return loginpage.errorMessage.getText();
+
+    }
+
 
 }
