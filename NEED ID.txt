@@ -11,5 +11,26 @@ Login Page:
 Preview page:
 //ul[@id='interior-sub-nav']/li[@class='girls-link']/span[@class='active']   and dropdown options
 
+Password reset page:
+Button reset password
 
+GuyHomePage:
+button - GetMoreCredits
+
+https://staging.mygirlfund.com/boys/myaccount
+credits radio checkboxes
+BuyCredits button
+
+PaymentGateway:
+ids for expiration spans (month, year)
+ccv id = cvv id
+
+Contribution page:
+Credits select
+
+MyGirlFund: Credit Card Contribution:
+Button submit
+
+escrowpreview:
+Buttons
 
